@@ -63,17 +63,29 @@ html2canvas(firstPatternDiv, {
     }
 });
 
+var randomChangeNumber = Math.floor(Math.random() * gridNumber);
+
 var secondPatternDiv = document.createElement("div");
 secondPatternDiv.className="pattern";
 secondPatternDiv.id="second-pattern";
 document.body.appendChild(secondPatternDiv);
 
 for(i in randomNumberStack){
-    if (randomNumberStack[i] % 3 == 0) {
-        createYellowDiv(secondPatternDiv); 
-    } else {
-        createRedDiv(secondPatternDiv);
+    if(i == randomChangeNumber){
+        if (randomNumberStack[i] % 3 == 0) {
+            createYellowDiv(secondPatternDiv); 
+        } else {
+            createRedDiv(secondPatternDiv);
+        }
     }
+    else{
+        if (randomNumberStack[i] % 3 == 0) {
+            createRedDiv(secondPatternDiv);
+        } else {
+            createYellowDiv(secondPatternDiv);
+        }
+    }
+    
 }
 
 html2canvas(secondPatternDiv, {
